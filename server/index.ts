@@ -1,7 +1,9 @@
-import Config from './utils/config';
-import app from './app';
 import { createServer, Server } from 'http';
+
+import Config from './utils/config';
 import logger from './utils/logger';
+import app from './app';
+logger.info(`connecting to ${Config.MONGODB_URI}`);
 
 const server: Server = createServer(app);
 
