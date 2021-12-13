@@ -12,7 +12,6 @@ import requestLogger from './utils/middleware';
 
 const app: Application = express();
 
-app.use(express.static('../client/build'));
 app.use(cors());
 app.use(express.json());
 app.use(
@@ -22,14 +21,14 @@ app.use(
 );
 
 app.use(requestLogger);
+
+/* Endpoints */
 app.use('/api/farms', farmsRouter);
 
 mongoose
   .connect(Config.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+    useUnifiedTopology: true
   } as ConnectOptions)
   .then(() => logger.info('connected to MongoDB'))
   .catch((error) => {
