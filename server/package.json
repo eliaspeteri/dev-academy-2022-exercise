@@ -4,10 +4,10 @@
   "description": "API for the Farm application.",
   "main": "index.ts",
   "scripts": {
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "compile": "tsc",
     "build": "npm run compile",
     "dev": "cross-env NODE_ENV=development ts-node-dev index.ts",
-    "start": "node index.ts",
     "lint": "eslint ./*.ts",
     "format": "eslint ./*.ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,15 +17,14 @@
     "url": "git+https://github.com/eliaspeteri/dev-academy-2022-exercise.git"
   },
   "keywords": [
-    "js",
-    "javascript",
-    "typescript",
-    "node",
-    "npm",
     "api",
+    "farm",
+    "javascript",
+    "js",
+    "typescript",
     "mongodb",
-    "mongo",
-    "farm"
+    "node",
+    "npm"
   ],
   "author": "Elias Peteri",
   "license": "ISC",
@@ -35,15 +34,14 @@
   "homepage": "https://github.com/eliaspeteri/dev-academy-2022-exercise#readme",
   "dependencies": {
     "@types/cors": "^2.8.12",
-    "apollo": "^2.33.9",
-    "apollo-server": "^3.5.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "eslint": "^8.4.1",
     "express": "^4.17.1",
-    "graphql": "^16.1.0",
+    "formidable": "^2.0.1",
     "mongoose": "^6.1.0",
+    "nodemon": "^2.0.15",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.2"
   },
