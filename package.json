@@ -1,0 +1,28 @@
+{
+  "name": "dev-academy-2022-exercise",
+  "version": "1.0.0",
+  "description": "1. [Preamble](#preamble)\r 2. [Deployed application](#deployed-application)\r 3. [Dependencies and used libraries](#dependencies-and-used-libraries)\r 4. [Installation](#installation)\r 5. [Troubleshooting](#troubleshooting)",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "start:production": "cd server/ && node dist/index.js",
+    "start:dev": "concurrently --kill-others -n CLIENT,SERVER \"cd client/ && npm start\" \"cd server && npm run dev\"",
+    "front:install:build": "cd client/ && npm i && npm run build",
+    "server:install:compile": "cd server && npm i && npm run compile",
+    "preinstall": "npm run front:install:build",
+    "postinstall": "npm run server:install:compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliaspeteri/dev-academy-2022-exercise.git"
+  },
+  "author": "Elias Peteri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliaspeteri/dev-academy-2022-exercise/issues"
+  },
+  "homepage": "https://github.com/eliaspeteri/dev-academy-2022-exercise#readme",
+  "devDependencies": {
+    "concurrently": "^6.4.0"
+  }
+}
