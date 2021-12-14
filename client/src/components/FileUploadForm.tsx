@@ -8,12 +8,18 @@ import {
   Segment
 } from 'semantic-ui-react';
 
+/* Contexts */
+import { useToastUpdate } from '../contexts/ToastContext';
+
+/* Services */
 import FileUploadService from '../services/fileUpload';
 
 const FileUploadForm: React.FC = (): JSX.Element => {
   const [fileSelected, setFileSelected] = useState(null);
   const [fileNameSelected, setFileNameSelected] = useState('');
   const [statusCode, setStatusCode] = useState(0);
+
+  const toastUpdate: (newMsg: string) => void = useToastUpdate();
 
   const fileChange = (e: any): void => {
     if (!e.target.files) return;
@@ -27,19 +33,18 @@ const FileUploadForm: React.FC = (): JSX.Element => {
     e.preventDefault();
 
     const formData: FormData = new FormData();
-    console.table(fileSelected);
     if (fileSelected) {
       formData.append('csv', fileSelected, fileNameSelected);
     }
 
     try {
-      console.log('Sending file');
       const responseStatusCode: number = await FileUploadService.upload(
         formData
       );
+      toastUpdate('File uploaded successfully.');
       setStatusCode(responseStatusCode);
     } catch (error) {
-      //? Toast here?
+      toastUpdate('Error uploading a file.');
     }
   };
 
